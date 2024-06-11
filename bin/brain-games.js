@@ -1,2 +1,7 @@
 #!/usr/bin/env node
-console.log("Welcome to the Brain Games!")
+// const readlineSync = require("readline-sync");
+
+import { getName } from "../src/cli.js";
+
+console.log("Welcome to the Brain Games!");
+getName();
