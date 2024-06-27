@@ -4,4 +4,6 @@
 
 <a href="https://codeclimate.com/github/sophiepavlova/fullstack-javascript-project-44/maintainability"><img src="https://api.codeclimate.com/v1/badges/3487f7c3115c0849ea35/maintainability" /></a>
 
-https://asciinema.org/a/jbshRbmPBMFAExiT9TTTCnfJd
+<!-- https://asciinema.org/a/jbshRbmPBMFAExiT9TTTCnfJd -->
+
+https://asciinema.org/a/CQhEUOF1W4m6MPHks5ReYyMOS
