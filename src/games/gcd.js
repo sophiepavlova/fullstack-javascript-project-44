@@ -81,7 +81,7 @@ function startGcdGame() {
     isCalsCorrect();
   }
 
-  setCount();
+  setCount(0);
 }
 
 export default startGcdGame;
