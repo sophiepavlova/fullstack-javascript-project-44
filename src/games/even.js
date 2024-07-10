@@ -3,7 +3,7 @@ import {
   getName,
   getRandomNumber,
   giveTask,
-  guessIsEven,
+  guess,
   wrongGuessMessage,
   successMessage,
   getCount,
@@ -14,21 +14,21 @@ import {
 
 function startEvenGame() {
   let even = true;
-  let guessNumberIsEven;
+  let guessIsTrue;
 
   getName();
   giveTask('Answer "yes" if the number is even, otherwise answer "no".');
 
   function isGuessCorrect(rand) {
     even = rand % 2 === 0;
-    if (guessNumberIsEven === 'yes' && even === false) {
-      wrongGuessMessage(guessNumberIsEven, `Correct answer was 'no'.`);
+    if (guessIsTrue === 'yes' && even === false) {
+      wrongGuessMessage(guessIsTrue, `Correct answer was 'no'.`);
       gameOver();
-    } else if (guessNumberIsEven === 'no' && even === true) {
-      wrongGuessMessage(guessNumberIsEven, `Correct answer was 'yes'.`);
+    } else if (guessIsTrue === 'no' && even === true) {
+      wrongGuessMessage(guessIsTrue, `Correct answer was 'yes'.`);
       gameOver();
-    } else if (guessNumberIsEven !== 'yes' && guessNumberIsEven !== 'no') {
-      wrongGuessMessage(guessNumberIsEven, '');
+    } else if (guessIsTrue !== 'yes' && guessIsTrue !== 'no') {
+      wrongGuessMessage(guessIsTrue, '');
       gameOver();
     } else {
       incrementCount();
@@ -41,7 +41,7 @@ function startEvenGame() {
 
   while (getCount() < 3) {
     const randNumber = getRandomNumber();
-    guessNumberIsEven = guessIsEven(randNumber);
+    guessIsTrue = guess(randNumber);
     isGuessCorrect(randNumber);
   }
   setCount(0);

@@ -2,7 +2,7 @@
 import readlineSync from 'readline-sync';
 
 let count = 0;
-let guessNumberIsEven;
+let guessIsTrue;
 let userName;
 const signs = ['+', '-', '*'];
 
@@ -57,8 +57,29 @@ export function successMessage() {
 export function giveTask(task) {
   console.log(task);
 }
-export function guessIsEven(randNumber) {
+export function guess(randNumber) {
   console.log(`Question: ${randNumber}`);
-  guessNumberIsEven = readlineSync.question('Your answer: ');
-  return guessNumberIsEven;
+  guessIsTrue = readlineSync.question('Your answer: ');
+  return guessIsTrue;
 }
+
+// export function isGuessCorrect(rand) {
+//   even = rand % 2 === 0;
+//   if (guessIsTrue === 'yes' && even === false) {
+//     wrongGuessMessage(guessIsTrue, `Correct answer was 'no'.`);
+//     gameOver();
+//   } else if (guessIsTrue === 'no' && even === true) {
+//     wrongGuessMessage(guessIsTrue, `Correct answer was 'yes'.`);
+//     gameOver();
+//   } else if (guessIsTrue !== 'yes' && guessIsTrue !== 'no') {
+//     wrongGuessMessage(guessIsTrue, '');
+//     gameOver();
+//   } else {
+//     incrementCount();
+//     console.log('Correct!');
+//     if (getCount() === 3) {
+//       successMessage();
+//     }
+//   }
+// }
+
