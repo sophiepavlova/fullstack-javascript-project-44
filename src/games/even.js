@@ -21,10 +21,10 @@ function startEvenGame() {
   function isGuessCorrect(rand) {
     even = rand % 2 === 0;
     if (guessIsTrue === 'yes' && even === false) {
-      wrongGuessMessage(guessIsTrue, `Correct answer was 'no'.`);
+      wrongGuessMessage(guessIsTrue, "Correct answer was 'no'.");
       gameOver();
     } else if (guessIsTrue === 'no' && even === true) {
-      wrongGuessMessage(guessIsTrue, `Correct answer was 'yes'.`);
+      wrongGuessMessage(guessIsTrue, "Correct answer was 'yes'.");
       gameOver();
     } else if (guessIsTrue !== 'yes' && guessIsTrue !== 'no') {
       wrongGuessMessage(guessIsTrue, '');
