@@ -5,8 +5,8 @@ import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
 import pluginJs from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
-import prettierPlugin from 'eslint-plugin-prettier';
-import prettierConfig from 'eslint-config-prettier';
+// import prettierPlugin from 'eslint-plugin-prettier';
+// import prettierConfig from 'eslint-config-prettier';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,11 +32,11 @@ export default [
     },
     rules: {
       ...importPlugin.configs.recommended.rules,
-      'prettier/prettier': 'error',
+      // 'prettier/prettier': 'error',
     },
   },
   ...compat.extends('airbnb-base'),
-  prettierConfig,
+  // prettierConfig,
   {
     rules: {
       'no-underscore-dangle': ['error', { allow: ['__filename', '__dirname'] }],
