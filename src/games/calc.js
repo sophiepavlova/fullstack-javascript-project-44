@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import readlineSync from 'readline-sync';
 import {
   getName,

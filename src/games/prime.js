@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 // import readlineSync from 'readline-sync';
 import {
   getName,
@@ -23,7 +22,7 @@ function startPrimeGame() {
   let guessIsTrue;
 
   getName();
-  giveTask(`Answer "yes" if given number is prime. Otherwise answer "no".`);
+  giveTask('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   function getCorrectAnswer() {
     if (primeNumbers.includes(generatedNumber)) {
@@ -37,10 +36,10 @@ function startPrimeGame() {
   function isGuessCorrect() {
     // even = rand % 2 === 0;
     if (guessIsTrue === 'yes' && correctAnswer === false) {
-      wrongGuessMessage(guessIsTrue, `Correct answer was 'no'.`);
+      wrongGuessMessage(guessIsTrue, "Correct answer was 'no'.");
       gameOver();
     } else if (guessIsTrue === 'no' && correctAnswer === true) {
-      wrongGuessMessage(guessIsTrue, `Correct answer was 'yes'.`);
+      wrongGuessMessage(guessIsTrue, "Correct answer was 'yes'.");
       gameOver();
     } else if (guessIsTrue !== 'yes' && guessIsTrue !== 'no') {
       wrongGuessMessage(guessIsTrue, '');
