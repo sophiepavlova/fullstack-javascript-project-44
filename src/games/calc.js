@@ -40,7 +40,7 @@ function startCalcGame() {
         expressionResult = 'undefined';
     }
 
-    console.log(expressionResult);
+    // console.log(expressionResult);
 
     randExpression = `${a} ${sign} ${b}`;
     return randExpression;
@@ -53,8 +53,8 @@ function startCalcGame() {
   }
 
   function calcIsCorrect() {
-    console.log(userCalculationResult);
-    console.log(expressionResult);
+    // console.log(userCalculationResult);
+    // console.log(expressionResult);
     if (userCalculationResult !== expressionResult) {
       gameOver();
       wrongGuessMessage(

@@ -3,7 +3,7 @@ import {
   getName,
   getRandomNumber,
   giveTask,
-  guess,
+  makeGuess,
   wrongGuessMessage,
   successMessage,
   getCount,
@@ -41,7 +41,7 @@ function startEvenGame() {
 
   while (getCount() < 3) {
     const randNumber = getRandomNumber();
-    guessIsTrue = guess(randNumber);
+    guessIsTrue = makeGuess(randNumber);
     isGuessCorrect(randNumber);
   }
   setCount(0);

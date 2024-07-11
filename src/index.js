@@ -57,29 +57,8 @@ export function successMessage() {
 export function giveTask(task) {
   console.log(task);
 }
-export function guess(randNumber) {
+export function makeGuess(randNumber) {
   console.log(`Question: ${randNumber}`);
   guessIsTrue = readlineSync.question('Your answer: ');
   return guessIsTrue;
 }
-
-// export function isGuessCorrect(rand) {
-//   even = rand % 2 === 0;
-//   if (guessIsTrue === 'yes' && even === false) {
-//     wrongGuessMessage(guessIsTrue, `Correct answer was 'no'.`);
-//     gameOver();
-//   } else if (guessIsTrue === 'no' && even === true) {
-//     wrongGuessMessage(guessIsTrue, `Correct answer was 'yes'.`);
-//     gameOver();
-//   } else if (guessIsTrue !== 'yes' && guessIsTrue !== 'no') {
-//     wrongGuessMessage(guessIsTrue, '');
-//     gameOver();
-//   } else {
-//     incrementCount();
-//     console.log('Correct!');
-//     if (getCount() === 3) {
-//       successMessage();
-//     }
-//   }
-// }
-
