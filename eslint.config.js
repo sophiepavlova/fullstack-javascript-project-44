@@ -28,7 +28,7 @@ export default [
     },
     plugins: {
       import: importPlugin,
-      prettier: prettierPlugin,
+      // prettier: prettierPlugin,
     },
     rules: {
       ...importPlugin.configs.recommended.rules,
