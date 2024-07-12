@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import {
   getName,
   giveTask,
@@ -9,6 +8,7 @@ import {
   setCount,
   getCount,
   gameOver,
+  getUserResult,
 } from '../index.js';
 
 function startGcdGame() {
@@ -17,8 +17,8 @@ function startGcdGame() {
   let biggerNumber;
   let smallerNumber;
 
-  let userGcdResult;
   let correctGcdResult;
+  let userResult;
 
   getName();
   giveTask('Find the greatest common divisor of given numbers.');
@@ -52,15 +52,9 @@ function startGcdGame() {
     console.log(correctGcdResult); // for testing, so not to calculate by yourself
   }
 
-  function calculateGcdTask() {
-    console.log(`Question: ${number1} ${number2}`);
-    userGcdResult = Number(readlineSync.question('Your answer: '));
-    return userGcdResult;
-  }
-
   function isCalsCorrect() {
     getCount();
-    if (userGcdResult === correctGcdResult) {
+    if (userResult === correctGcdResult) {
       incrementCount();
       console.log('Correct!');
       if (getCount() === 3) {
@@ -68,7 +62,7 @@ function startGcdGame() {
       }
     } else {
       wrongGuessMessage(
-        userGcdResult,
+        userResult,
         `Correct answer was '${correctGcdResult}'.`,
       );
       gameOver();
@@ -76,7 +70,7 @@ function startGcdGame() {
   }
   while (getCount() < 3) {
     getCorrectGcd();
-    calculateGcdTask();
+    userResult = getUserResult(number1, number2);
     isCalsCorrect();
   }
 

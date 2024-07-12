@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import {
   getName,
   giveTask,
@@ -9,6 +8,7 @@ import {
   setCount,
   getCount,
   gameOver,
+  getUserResult,
 } from '../index.js';
 
 function startProgressionGame() {
@@ -52,14 +52,9 @@ function startProgressionGame() {
     }
   }
 
-  function guessNumberInProgression() {
-    console.log(`Question: ${progressionString} `);
-    userResult = Number(readlineSync.question('Your answer: '));
-    return userResult;
-  }
   while (getCount() < 3) {
     generateProgression();
-    guessNumberInProgression();
+    userResult = getUserResult(progressionString);
     isGuessCorrect();
   }
 

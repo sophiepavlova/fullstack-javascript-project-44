@@ -1,4 +1,3 @@
-// import readlineSync from 'readline-sync';
 import {
   getName,
   giveTask,

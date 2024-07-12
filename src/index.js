@@ -4,6 +4,7 @@ let count = 0;
 let guessIsTrue;
 let userName;
 const signs = ['+', '-', '*'];
+let userResult;
 
 export const getName = () => {
   console.log('Welcome to the Brain Games!');
@@ -60,4 +61,12 @@ export function makeGuess(randNumber) {
   console.log(`Question: ${randNumber}`);
   guessIsTrue = readlineSync.question('Your answer: ');
   return guessIsTrue;
+}
+
+export function getUserResult(...data) {
+  // Join data with a space if there are multiple arguments
+  const question = data.join(' ');
+  console.log(`Question: ${question}`);
+  userResult = Number(readlineSync.question('Your answer: '));
+  return userResult;
 }

@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import {
   getName,
   giveTask,
@@ -10,6 +9,7 @@ import {
   setCount,
   getCount,
   gameOver,
+  getUserResult,
 } from '../index.js';
 
 function startCalcGame() {
@@ -45,12 +45,6 @@ function startCalcGame() {
     return randExpression;
   }
 
-  function calculateExpression() {
-    console.log(`Question: ${randExpression}`);
-    userCalculationResult = Number(readlineSync.question('Your answer: '));
-    return userCalculationResult;
-  }
-
   function calcIsCorrect() {
     // console.log(userCalculationResult);
     // console.log(expressionResult);
@@ -71,7 +65,7 @@ function startCalcGame() {
 
   while (getCount() < 3) {
     randExpression = getRandomExpression();
-    userCalculationResult = calculateExpression(randExpression);
+    userCalculationResult = getUserResult(randExpression);
     calcIsCorrect(userCalculationResult);
   }
   setCount(0);
