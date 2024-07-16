@@ -1,7 +1,6 @@
 import {
-  getName,
+  makeWelcome,
   giveTask,
-  getRandomNumber,
   getRandomSign,
   successMessage,
   wrongGuessMessage,
@@ -12,12 +11,14 @@ import {
   getUserResult,
 } from '../index.js';
 
+import getRandomNumber from '../utils.js';
+
 function startCalcGame() {
   let randExpression;
   let expressionResult;
   let userCalculationResult;
 
-  getName();
+  makeWelcome();
   giveTask('What is the result of the expression?');
 
   function getRandomExpression() {

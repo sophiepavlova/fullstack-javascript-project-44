@@ -1,7 +1,6 @@
 import {
-  getName,
+  makeWelcome,
   giveTask,
-  getRandomNumber,
   successMessage,
   wrongGuessMessage,
   incrementCount,
@@ -10,6 +9,8 @@ import {
   gameOver,
   makeGuess,
 } from '../index.js';
+
+import getRandomNumber from '../utils.js';
 
 function startPrimeGame() {
   const primeNumbers = [
@@ -20,7 +21,7 @@ function startPrimeGame() {
   let correctAnswer;
   let guessIsTrue;
 
-  getName();
+  makeWelcome();
   giveTask('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   function getCorrectAnswer() {

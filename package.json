@@ -1,8 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.1",
-  "description": "[![Actions Status](https://github.com/sophiepavlova/fullstack-javascript-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sophiepavlova/fullstack-javascript-project-44/actions)",
-  "main": "index.js",
+  "description": "You will find 5 simple mathematic games here. Each one works similarily: you have 3 attempts, if you are correct in all of them you win. If you make a mistake the game is over, and you may start again.",
   "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js",
@@ -11,9 +10,6 @@
     "brain-gcd": "bin/brain-gcd.js",
     "brain-progression": "bin/brain-progression.js",
     "brain-prime": "bin/brain-prime.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Olga Pavlova",
   "license": "ISC",

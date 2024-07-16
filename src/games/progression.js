@@ -1,7 +1,6 @@
 import {
-  getName,
+  makeWelcome,
   giveTask,
-  getRandomNumber,
   successMessage,
   wrongGuessMessage,
   incrementCount,
@@ -11,6 +10,8 @@ import {
   getUserResult,
 } from '../index.js';
 
+import getRandomNumber from '../utils.js';
+
 function startProgressionGame() {
   let userResult;
   let numberToGuess;
@@ -19,7 +20,7 @@ function startProgressionGame() {
   let progressionArrDots = [];
   let progressionString;
 
-  getName();
+  makeWelcome();
   giveTask('What number is missing in the progression?');
 
   function generateProgression() {

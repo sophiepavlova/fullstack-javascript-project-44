@@ -1,7 +1,6 @@
 import {
-  getName,
+  makeWelcome,
   giveTask,
-  getRandomNumber,
   successMessage,
   wrongGuessMessage,
   incrementCount,
@@ -10,6 +9,8 @@ import {
   gameOver,
   getUserResult,
 } from '../index.js';
+
+import getRandomNumber from '../utils.js';
 
 function startGcdGame() {
   let number1;
@@ -20,7 +21,7 @@ function startGcdGame() {
   let correctGcdResult;
   let userResult;
 
-  getName();
+  makeWelcome();
   giveTask('Find the greatest common divisor of given numbers.');
 
   function getBiggerNumber() {
