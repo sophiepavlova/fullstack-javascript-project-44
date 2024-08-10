@@ -1,11 +1,35 @@
 import readlineSync from 'readline-sync';
 import makeWelcome from './cli.js';
 
-let count = 0;
-let guessIsTrue;
+const roundsCount = 3;
 let userName = '';
-const signs = ['+', '-', '*'];
-let userResult;
+let userAnswer;
+const runEngine = (rules, generateRound) => {
+  userName = makeWelcome();
+  console.log(rules);
+  for (let i = 0; i < roundsCount; i++) {
+    const [question, answer] = generateRound();
+    console.log(`Question: ${question}`);
+    userAnswer = readlineSync.question('Your answer: ');
+    if (userAnswer !== answer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. ${answer} `);
+      console.log(`Let's try again, ${userName}!`);
+      return;
+    }
+  }
+  console.log(`Congratulations, ${userName}!`);
+};
+export default runEngine;
+
+// export function startGame() {
+//   userName = makeWelcome();
+// }
+
+// let count = 0;
+// let guessIsTrue;
+// let userName = '';
+// const signs = ['+', '-', '*'];
+// let userResult;
 
 // export const makeWelcome = () => {
 //   console.log('Welcome to the Brain Games!');
@@ -18,58 +42,60 @@ let userResult;
 //   const randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 //   return randNumber;
 // }
-export function startGame() {
-  userName = makeWelcome();
-}
 
-export function getRandomSign() {
-  const randIndex = Math.floor(Math.random() * signs.length);
-  const randSign = signs[randIndex];
-  return randSign;
-}
+// 🚩 my previous functions
 
-export function resetCount() {
-  count = 3;
-}
-export function incrementCount() {
-  count += 1;
-}
-export function setCount(newCount) {
-  count = newCount;
-}
-export function getCount() {
-  return count;
-}
+// export function startGame() {
+//   userName = makeWelcome();
+// }
+// export function getRandomSign() {
+//   const randIndex = Math.floor(Math.random() * signs.length);
+//   const randSign = signs[randIndex];
+//   return randSign;
+// }
 
-export function wrongGuessMessage(guess, repl) {
-  console.log(`'${guess}' is wrong answer ;(. ${repl} `);
-}
+// export function resetCount() {
+//   count = 3;
+// }
+// export function incrementCount() {
+//   count += 1;
+// }
+// export function setCount(newCount) {
+//   count = newCount;
+// }
+// export function getCount() {
+//   return count;
+// }
 
-export function tryAgainMessage() {
-  console.log(`Let's try again, ${userName}!`);
-}
-export function gameOver() {
-  tryAgainMessage();
-  resetCount();
-}
+// export function wrongGuessMessage(guess, repl) {
+//   console.log(`'${guess}' is wrong answer ;(. ${repl} `);
+// }
 
-export function successMessage() {
-  console.log(`Congratulations, ${userName}!`);
-}
+// export function tryAgainMessage() {
+//   console.log(`Let's try again, ${userName}!`);
+// }
+// export function gameOver() {
+//   tryAgainMessage();
+//   resetCount();
+// }
 
-export function giveTask(task) {
-  console.log(task);
-}
-export function makeGuess(randNumber) {
-  console.log(`Question: ${randNumber}`);
-  guessIsTrue = readlineSync.question('Your answer: ');
-  return guessIsTrue;
-}
+// export function successMessage() {
+//   console.log(`Congratulations, ${userName}!`);
+// }
 
-export function getUserResult(...data) {
-  // Join data with a space if there are multiple arguments
-  const question = data.join(' ');
-  console.log(`Question: ${question}`);
-  userResult = Number(readlineSync.question('Your answer: '));
-  return userResult;
-}
+// export function giveTask(task) {
+//   console.log(task);
+// }
+// export function makeGuess(randNumber) {
+//   console.log(`Question: ${randNumber}`);
+//   guessIsTrue = readlineSync.question('Your answer: ');
+//   return guessIsTrue;
+// }
+
+// export function getUserResult(...data) {
+//   // Join data with a space if there are multiple arguments
+//   const question = data.join(' ');
+//   console.log(`Question: ${question}`);
+//   userResult = Number(readlineSync.question('Your answer: '));
+//   return userResult;
+// }
