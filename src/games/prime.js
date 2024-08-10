@@ -1,5 +1,5 @@
 import {
-  makeWelcome,
+  startGame,
   giveTask,
   successMessage,
   wrongGuessMessage,
@@ -21,7 +21,7 @@ function startPrimeGame() {
   let correctAnswer;
   let guessIsTrue;
 
-  makeWelcome();
+  startGame();
   giveTask('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   function getCorrectAnswer() {

@@ -1,5 +1,5 @@
 import {
-  makeWelcome,
+  startGame,
   giveTask,
   successMessage,
   wrongGuessMessage,
@@ -20,7 +20,7 @@ function startProgressionGame() {
   let progressionArrDots = [];
   let progressionString;
 
-  makeWelcome();
+  startGame();
   giveTask('What number is missing in the progression?');
 
   function generateProgression() {

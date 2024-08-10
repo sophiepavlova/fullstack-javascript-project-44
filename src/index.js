@@ -1,23 +1,26 @@
 import readlineSync from 'readline-sync';
-// import makeWelcome from './cli.js';
+import makeWelcome from './cli.js';
 
 let count = 0;
 let guessIsTrue;
-let userName;
+let userName = '';
 const signs = ['+', '-', '*'];
 let userResult;
 
-export const makeWelcome = () => {
-  console.log('Welcome to the Brain Games!');
-  userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  return userName;
-};
+// export const makeWelcome = () => {
+//   console.log('Welcome to the Brain Games!');
+//   userName = readlineSync.question('May I have your name? ');
+//   console.log(`Hello, ${userName}!`);
+//   return userName;
+// };
 
 // export function getRandomNumber(min = 1, max = 100) {
 //   const randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 //   return randNumber;
 // }
+export function startGame() {
+  userName = makeWelcome();
+}
 
 export function getRandomSign() {
   const randIndex = Math.floor(Math.random() * signs.length);

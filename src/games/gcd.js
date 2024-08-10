@@ -1,5 +1,5 @@
 import {
-  makeWelcome,
+  startGame,
   giveTask,
   successMessage,
   wrongGuessMessage,
@@ -21,7 +21,7 @@ function startGcdGame() {
   let correctGcdResult;
   let userResult;
 
-  makeWelcome();
+  startGame();
   giveTask('Find the greatest common divisor of given numbers.');
 
   function getBiggerNumber() {

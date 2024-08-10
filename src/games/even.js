@@ -1,5 +1,5 @@
 import {
-  makeWelcome,
+  startGame,
   giveTask,
   makeGuess,
   wrongGuessMessage,
@@ -9,23 +9,23 @@ import {
   setCount,
   gameOver,
 } from '../index.js';
-
 import getRandomNumber from '../utils.js';
 
 function startEvenGame() {
   let even = true;
   let guessIsTrue;
 
-  makeWelcome();
+  // makeWelcome();
+  startGame();
   giveTask('Answer "yes" if the number is even, otherwise answer "no".');
 
   function isGuessCorrect(rand) {
     even = rand % 2 === 0;
     if (guessIsTrue === 'yes' && even === false) {
-      wrongGuessMessage(guessIsTrue, 'Correct answer was \'no\'.');
+      wrongGuessMessage(guessIsTrue, "Correct answer was 'no'.");
       gameOver();
     } else if (guessIsTrue === 'no' && even === true) {
-      wrongGuessMessage(guessIsTrue, 'Correct answer was \'yes\'.');
+      wrongGuessMessage(guessIsTrue, "Correct answer was 'yes'.");
       gameOver();
     } else if (guessIsTrue !== 'yes' && guessIsTrue !== 'no') {
       wrongGuessMessage(guessIsTrue, '');
