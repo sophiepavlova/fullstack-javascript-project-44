@@ -1,50 +1,18 @@
-import {
-  startGame,
-  giveTask,
-  makeGuess,
-  wrongGuessMessage,
-  successMessage,
-  getCount,
-  incrementCount,
-  setCount,
-  gameOver,
-} from '../index.js';
-import getRandomNumber from '../utils.js';
+import runEngine from '../index.js';
+import getRandomInRange from '../utils.js';
 
-function startEvenGame() {
-  let even = true;
-  let guessIsTrue;
-
-  // makeWelcome();
-  startGame();
-  giveTask('Answer "yes" if the number is even, otherwise answer "no".');
-
-  function isGuessCorrect(rand) {
-    even = rand % 2 === 0;
-    if (guessIsTrue === 'yes' && even === false) {
-      wrongGuessMessage(guessIsTrue, "Correct answer was 'no'.");
-      gameOver();
-    } else if (guessIsTrue === 'no' && even === true) {
-      wrongGuessMessage(guessIsTrue, "Correct answer was 'yes'.");
-      gameOver();
-    } else if (guessIsTrue !== 'yes' && guessIsTrue !== 'no') {
-      wrongGuessMessage(guessIsTrue, '');
-      gameOver();
-    } else {
-      incrementCount();
-      console.log('Correct!');
-      if (getCount() === 3) {
-        successMessage();
-      }
-    }
-  }
-
-  while (getCount() < 3) {
-    const randNumber = getRandomNumber();
-    guessIsTrue = makeGuess(randNumber);
-    isGuessCorrect(randNumber);
-  }
-  setCount(0);
+function isEven(num) {
+  return num % 2 === 0 ? 'yes' : 'no';
 }
+const generateRound = () => {
+  const randNum = getRandomInRange();
+  const answer = isEven(randNum);
+  const question = randNum;
+  return [question, answer];
+};
 
-export default startEvenGame;
+export default () => {
+  const description =
+    'Answer "yes" if the number is even, otherwise answer "no".';
+  runEngine(description, generateRound);
+};

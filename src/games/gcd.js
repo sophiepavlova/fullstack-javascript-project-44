@@ -1,81 +1,32 @@
-import {
-  startGame,
-  giveTask,
-  successMessage,
-  wrongGuessMessage,
-  incrementCount,
-  setCount,
-  getCount,
-  gameOver,
-  getUserResult,
-} from '../index.js';
+import runEngine from '../index.js';
+import getRandomInRange from '../utils.js';
 
-import getRandomNumber from '../utils.js';
+function getCorrectGcd(number1, number2) {
+  // Алгоритм Евклида
+  let ostatok;
+  let a = Math.max(number1, number2); // делитель
+  let b = Math.min(number1, number2); // делимое
 
-function startGcdGame() {
-  let number1;
-  let number2;
-  let biggerNumber;
-  let smallerNumber;
-
-  let correctGcdResult;
-  let userResult;
-
-  startGame();
-  giveTask('Find the greatest common divisor of given numbers.');
-
-  function getBiggerNumber() {
-    number1 = getRandomNumber();
-    number2 = getRandomNumber();
-    if (number1 >= number2) {
-      biggerNumber = number1;
-      smallerNumber = number2;
-    } else {
-      biggerNumber = number2;
-      smallerNumber = number1;
-    }
-    // console.log(biggerNumber, smallerNumber);
+  while (b !== 0) {
+    ostatok = a % b;
+    a = b;
+    b = ostatok;
   }
-
-  function getCorrectGcd() {
-    // Алгоритм Евклида
-    getBiggerNumber();
-    let ostatok;
-    let a = biggerNumber; // делитель
-    let b = smallerNumber; // делимое
-
-    while (b !== 0) {
-      ostatok = a % b;
-      a = b;
-      b = ostatok;
-    }
-    correctGcdResult = a;
-    console.log(correctGcdResult); // for testing, so not to calculate by yourself
-  }
-
-  function isCalsCorrect() {
-    getCount();
-    if (userResult === correctGcdResult) {
-      incrementCount();
-      console.log('Correct!');
-      if (getCount() === 3) {
-        successMessage();
-      }
-    } else {
-      wrongGuessMessage(
-        userResult,
-        `Correct answer was '${correctGcdResult}'.`,
-      );
-      gameOver();
-    }
-  }
-  while (getCount() < 3) {
-    getCorrectGcd();
-    userResult = getUserResult(number1, number2);
-    isCalsCorrect();
-  }
-
-  setCount(0);
+  const correctGcdResult = a;
+  console.log(correctGcdResult); // for testing, so not to calculate by yourself
+  return correctGcdResult;
 }
 
-export default startGcdGame;
+const generateRound = () => {
+  const number1 = getRandomInRange();
+  const number2 = getRandomInRange();
+  const question = `${number1} ${number2}`;
+  const answer = String(getCorrectGcd(number1, number2));
+
+  return [question, answer];
+};
+
+export default () => {
+  const description = 'Find the greatest common divisor of given numbers.';
+  runEngine(description, generateRound);
+};

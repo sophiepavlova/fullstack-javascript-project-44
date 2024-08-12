@@ -1,74 +1,36 @@
-import {
-  giveTask,
-  getRandomSign,
-  successMessage,
-  wrongGuessMessage,
-  incrementCount,
-  setCount,
-  getCount,
-  gameOver,
-  getUserResult,
-  startGame,
-} from '../index.js';
+import runEngine from '../index.js';
+import getRandomInRange from '../utils.js';
 
-import getRandomNumber from '../utils.js';
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  return operators[getRandomInRange(0, operators.length - 1)];
+};
 
-function startCalcGame() {
-  let randExpression;
-  let expressionResult;
-  let userCalculationResult;
-
-  startGame();
-  giveTask('What is the result of the expression?');
-
-  function getRandomExpression() {
-    const a = getRandomNumber();
-    const b = getRandomNumber();
-    const sign = getRandomSign();
-
-    switch (sign) {
-      case '+':
-        expressionResult = a + b;
-        break;
-      case '-':
-        expressionResult = a - b;
-        break;
-      case '*':
-        expressionResult = a * b;
-        break;
-      default:
-        expressionResult = 'undefined';
-    }
-
-    // console.log(expressionResult);
-
-    randExpression = `${a} ${sign} ${b}`;
-    return randExpression;
+const calculate = (num1, num2, operator) => {
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      throw new Error(`Invalid operator - ${operator}`);
   }
+};
 
-  function calcIsCorrect() {
-    // console.log(userCalculationResult);
-    // console.log(expressionResult);
-    if (userCalculationResult !== expressionResult) {
-      gameOver();
-      wrongGuessMessage(
-        userCalculationResult,
-        `Correct answer was '${expressionResult}'.`,
-      );
-    } else {
-      incrementCount();
-      console.log('Correct!');
-      if (getCount() === 3) {
-        successMessage();
-      }
-    }
-  }
+const generateRound = () => {
+  const num1 = getRandomInRange();
+  const num2 = getRandomInRange();
+  const operator = getRandomOperator();
 
-  while (getCount() < 3) {
-    randExpression = getRandomExpression();
-    userCalculationResult = getUserResult(randExpression);
-    calcIsCorrect(userCalculationResult);
-  }
-  setCount(0);
-}
-export default startCalcGame;
+  const question = `${num1} ${operator} ${num2}`;
+  const answer = String(calculate(num1, num2, operator));
+
+  return [question, answer];
+};
+
+export default () => {
+  const description = 'What is the result of the expression?';
+  runEngine(description, generateRound);
+};

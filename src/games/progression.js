@@ -1,64 +1,39 @@
-import {
-  startGame,
-  giveTask,
-  successMessage,
-  wrongGuessMessage,
-  incrementCount,
-  setCount,
-  getCount,
-  gameOver,
-  getUserResult,
-} from '../index.js';
+import runEngine from '../index.js';
+import getRandomInRange from '../utils.js';
 
-import getRandomNumber from '../utils.js';
-
-function startProgressionGame() {
-  let userResult;
-  let numberToGuess;
+function generateProgression() {
   const progressionLength = 10;
   const progressionArr = [];
-  let progressionArrDots = [];
-  let progressionString;
 
-  startGame();
-  giveTask('What number is missing in the progression?');
+  const firstNumberInProgression = getRandomInRange(1, 15);
+  const progressionIncrement = getRandomInRange(1, 20);
+  const progressionHiddenIndex = getRandomInRange(0, 9);
+  console.log(progressionIncrement);
 
-  function generateProgression() {
-    const firstNumberInProgression = getRandomNumber(1, 15);
-    const progressionIncrement = getRandomNumber(1, 20);
-    const progressionHiddenIndex = getRandomNumber(0, 9);
-    console.log(progressionIncrement);
-    progressionArr[0] = firstNumberInProgression;
+  progressionArr[0] = firstNumberInProgression;
 
-    for (let i = 1; i < progressionLength; i += 1) {
-      progressionArr[i] = progressionArr[i - 1] + progressionIncrement;
-    }
-    numberToGuess = progressionArr[progressionHiddenIndex];
-    progressionArrDots = progressionArr.slice();
-    progressionArrDots[progressionHiddenIndex] = '..';
-    progressionString = progressionArrDots.join(' ');
+  for (let i = 1; i < progressionLength; i += 1) {
+    progressionArr[i] = progressionArr[i - 1] + progressionIncrement;
   }
+  const numberToGuess = progressionArr[progressionHiddenIndex];
+  const progressionArrDots = progressionArr.slice();
+  progressionArrDots[progressionHiddenIndex] = '..';
+  const progressionString = progressionArrDots.join(' ');
 
-  function isGuessCorrect() {
-    getCount();
-    if (userResult === numberToGuess) {
-      incrementCount();
-      console.log('Correct!');
-      if (getCount() === 3) {
-        successMessage();
-      }
-    } else {
-      wrongGuessMessage(userResult, `Correct answer was '${numberToGuess}'.`);
-      gameOver();
-    }
-  }
-
-  while (getCount() < 3) {
-    generateProgression();
-    userResult = getUserResult(progressionString);
-    isGuessCorrect();
-  }
-
-  setCount(0);
+  return {
+    question: progressionString,
+    answer: String(numberToGuess),
+  };
 }
-export default startProgressionGame;
+
+const generateRound = () => {
+  const { question, answer } = generateProgression();
+  console.log(answer);
+
+  return [question, answer];
+};
+
+export default () => {
+  const description = 'What number is missing in the progression?';
+  runEngine(description, generateRound);
+};
