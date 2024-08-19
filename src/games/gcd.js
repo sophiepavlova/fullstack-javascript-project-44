@@ -13,7 +13,6 @@ function getCorrectGcd(number1, number2) {
     b = ostatok;
   }
   const correctGcdResult = a;
-  console.log(correctGcdResult); // for testing, so not to calculate by yourself
   return correctGcdResult;
 }
 

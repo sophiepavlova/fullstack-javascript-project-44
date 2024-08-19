@@ -1,30 +1,27 @@
 import runEngine from '../index.js';
 import getRandomInRange from '../utils.js';
 
-function generateProgression() {
-  const progressionLength = 10;
-  const progressionArr = [];
+const generateProgression = (
+  start = getRandomInRange(1, 15),
+  step = getRandomInRange(1, 20),
+  length = 10,
+) => {
+  const progression = [];
 
-  const firstNumberInProgression = getRandomInRange(1, 15);
-  const progressionIncrement = getRandomInRange(1, 20);
-  const progressionHiddenIndex = getRandomInRange(0, 9);
-  console.log(progressionIncrement);
-
-  progressionArr[0] = firstNumberInProgression;
-
-  for (let i = 1; i < progressionLength; i += 1) {
-    progressionArr[i] = progressionArr[i - 1] + progressionIncrement;
+  for (let i = 0; i < length; i++) {
+    progression.push(start + step * i);
   }
-  const numberToGuess = progressionArr[progressionHiddenIndex];
-  const progressionArrDots = progressionArr.slice();
-  progressionArrDots[progressionHiddenIndex] = '..';
-  const progressionString = progressionArrDots.join(' ');
+  const progressionHiddenIndex = getRandomInRange(0, length - 1);
+  const numberToGuess = progression[progressionHiddenIndex];
+  const progressionDots = progression.slice();
+  progressionDots[progressionHiddenIndex] = '..';
+  const progressionString = progressionDots.join(' ');
 
   return {
     question: progressionString,
     answer: String(numberToGuess),
   };
-}
+};
 
 const generateRound = () => {
   const { question, answer } = generateProgression();

@@ -6,15 +6,12 @@ const primeNumbers = [
   73, 79, 83, 89, 97, 101,
 ];
 
-function isPrime(num) {
-  return primeNumbers.includes(num) ? 'yes' : 'no';
-}
+const isPrime = (num) => primeNumbers.includes(num);
 
 const generateRound = () => {
   const randNum = getRandomInRange();
-
   const question = `${randNum}`;
-  const answer = isPrime(randNum);
+  const answer = isPrime(randNum) ? 'yes' : 'no';
 
   return [question, answer];
 };
