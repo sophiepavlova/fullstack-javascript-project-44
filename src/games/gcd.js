@@ -2,7 +2,6 @@ import runEngine from '../index.js';
 import getRandomInRange from '../utils.js';
 
 function getCorrectGcd(number1, number2) {
-  // Алгоритм Евклида
   let ostatok;
   let a = Math.max(number1, number2); // делитель
   let b = Math.min(number1, number2); // делимое
