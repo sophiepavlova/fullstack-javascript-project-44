@@ -6,7 +6,7 @@ const roundsCount = 3;
 const runEngine = (rules, generateRound) => {
   const userName = makeWelcome();
   console.log(rules);
-  for (let i = 0; i < roundsCount; i++) {
+  for (let i = 0; i < roundsCount; i += 1) {
     const [question, answer] = generateRound();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
